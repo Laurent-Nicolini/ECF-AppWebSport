@@ -45,3 +45,15 @@ button:hover{
 button:active{
     background: #26921A !important;
 }
+
+a{
+    color: #34C924;
+}
+
+a:hover{
+    color: rgba(52, 201, 36, 0.5);
+}
+
+a:active{
+    color: #26921A;
+}
