@@ -18,3 +18,5 @@
             </div>
         </div>
     </nav>
+<p class="d-flex flex-row-reverse me-2"><a href='deconnexion.php'>Déconnexion</a></p>
+<br>

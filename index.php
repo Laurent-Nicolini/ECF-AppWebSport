@@ -19,8 +19,6 @@ if ($_SESSION['email'] ==''){
     <?php require_once 'menu.php' ?>
 
     <main>
-        <p class="d-flex flex-row-reverse me-2"><a href='deconnexion.php'>Déconnexion</a></p>
-        <br>
         <?php
             if($_SESSION['email'] !== ""){
                 $user = $_SESSION['email'];
