@@ -30,7 +30,7 @@
                 if(isset($_GET['erreur'])){
                     $err = $_GET['erreur'];
                     if($err !==0)
-                        echo "<p class='bg-danger mt-3'>Utilisateur ou mot de passe incorrect</p>";
+                        echo "<p class='bg-danger mt-3 text-white text-center'>Utilisateur ou mot de passe incorrect</p>";
                 }
                 ?>
             </form>
