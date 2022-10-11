@@ -1,8 +1,9 @@
 <?php
    try{
-      $pdo=new PDO("mysql:host=localhost;dbname=users","root","");
+      $pdo = new PDO("mysql:host=localhost;dbname=appwebsport","root","");
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    }
    catch(PDOException $e){
-      echo $e->getMessage();
+      exit('<b>Catched exception at line '. $e->getLine() .' :</b> '. $e->getMessage());
    }
 ?>

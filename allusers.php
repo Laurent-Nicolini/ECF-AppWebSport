@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,6 +16,35 @@
 
     <main>
         <h2 class="text-center">Liste de tous les partenaires</h2>
+        <?php
+            include_once 'connexionbdd.php';
+            $statement = $pdo->prepare(
+                    "SELECT * FROM users 
+                    INNER JOIN franchise ON users.id=users_id 
+                    INNER JOIN structure ON franchise.id=franchise_id
+                    WHERE role = 0"
+                    );
+
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_OBJ);
+        ?>
+        <br>
+        <div class="container d-flex flex-wrap">
+        <?php
+        foreach($result as $results){
+            echo "<div class='card mx-3 my-3' style='width: 18rem;'>
+            <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
+            <div class='card-body'>
+              <a href='partenaire?users_id=$results->users_id'><h5 class='card-title'>Nom: $results->Nom</h5></a>
+              <p class='card-text'>ID Client: $results->users_id</p>
+              <p class='card-text'>Email: $results->Email</p>
+              <p class='card-text'>$results->text_court</p>
+              <p class='card-text'>Adresse: $results->adresse</p>
+            </div>
+          </div>";
+        }
+        ?>
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
