@@ -7,7 +7,7 @@
             <div class="container-fluid d-flex">
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item active">
-                        <a class="nav-link" href="allusers.php">Voir tous les partenaires</a>
+                        <a class="nav-link" href="allusers.php?filtre=none">Voir tous les partenaires</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="addpart.php">Ajouter un partenaire</a>
