@@ -32,16 +32,31 @@ session_start();
         <div class="container d-flex flex-wrap">
         <?php
         foreach($result as $results){
-            echo "<div class='card mx-3 my-3' style='width: 18rem;'>
+            if ($results->active == 1){
+            echo "<div class='card mx-3 my-3' style='width: 18rem; height:40rem;'>
             <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
+            <p class='card-text text-white text-center' style='background-color: #34C924;'>ACTIF</p>
             <div class='card-body'>
-              <a href='partenaire?users_id=$results->users_id'><h5 class='card-title'>Nom: $results->Nom</h5></a>
+              <a href='partenaire?users_id=$results->users_id'><h5 class='card-title text-center'>$results->Nom</h5></a>
               <p class='card-text'>ID Client: $results->users_id</p>
               <p class='card-text'>Email: $results->Email</p>
               <p class='card-text'>$results->text_court</p>
               <p class='card-text'>Adresse: $results->adresse</p>
             </div>
           </div>";
+            } else {
+                echo "<div class='card mx-3 my-3' style='width: 18rem;'>
+            <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
+            <p class='card-text text-white text-center' style='background-color: #DB3A00;'>INACTIF</p>
+            <div class='card-body'>
+              <a href='partenaire?users_id=$results->users_id'><h5 class='card-title text-center'>$results->Nom</h5></a>
+              <p class='card-text'>ID Client: $results->users_id</p>
+              <p class='card-text'>Email: $results->Email</p>
+              <p class='card-text'>$results->text_court</p>
+              <p class='card-text'>Adresse: $results->adresse</p>
+            </div>
+          </div>";
+            }
         }
         ?>
         </div>

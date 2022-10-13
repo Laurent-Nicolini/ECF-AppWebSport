@@ -26,17 +26,30 @@ $partenaire = $_GET['users_id'];
     ?>
     <h2 class="text-center">Partenaire:</h2>
 
-    <div class="container d-flex justify-content-around">
+    <div class="container d-flex justify-content-around ">
         <?php
             foreach($result as $results){
-                echo "<div class='card mx-3 my-3' style='width: 18rem;'>
-                <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
-                <div class='card-body'>
-                <h5 class='card-title'>Nom: $results->Nom</h5>
-                <p class='card-text'>$results->text_court</p>
-                <p class='card-text'>Adresse: $results->adresse</p>
-                </div>
-                </div>";
+                if ($results->active == 1){
+                    echo "<div class='card mx-3 my-3' style='width: 18rem;'>
+                    <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
+                    <p class='card-text text-white text-center' style='background-color: #34C924;'>ACTIF</p>
+                    <div class='card-body'>
+                    <h5 class='card-title'>Nom: $results->Nom</h5>
+                    <p class='card-text'>$results->text_court</p>
+                    <p class='card-text'>Adresse: $results->adresse</p>
+                    </div>
+                    </div>";
+                } else {
+                    echo "<div class='card mx-3 my-3' style='width: 18rem;'>
+                    <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
+                    <p class='card-text text-white text-center' style='background-color: #DB3A00;'>INACTIF</p>
+                    <div class='card-body'>
+                    <h5 class='card-title'>Nom: $results->Nom</h5>
+                    <p class='card-text'>$results->text_court</p>
+                    <p class='card-text'>Adresse: $results->adresse</p>
+                    </div>
+                    </div>";
+                }
             }
         ?>
     </div>
