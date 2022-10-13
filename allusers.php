@@ -29,7 +29,7 @@ session_start();
             $result = $statement->fetchAll(PDO::FETCH_OBJ);
         ?>
         <br>
-        <div class="container d-flex flex-wrap">
+        <div class="container d-flex justify-content-around flex-wrap">
         <?php
         foreach($result as $results){
             if ($results->active == 1){
