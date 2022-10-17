@@ -13,7 +13,6 @@
 
     <main>
         <?php
-        var_dump($_COOKIE);
         if ($_GET["ajout"] == "partenaire"){
             echo '
             <br>
