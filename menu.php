@@ -10,7 +10,7 @@
                         <a class="nav-link" href="allusers.php?filtre=none">Voir tous les partenaires</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="addpart.php">Ajouter un partenaire</a>
+                        <a class="nav-link" href="addpart.php?ajout=partenaire">Ajouter un partenaire</a>
                     </li>            
                 </ul>
                 <form class="form-inline my-2 my-lg-2 ms-auto">
