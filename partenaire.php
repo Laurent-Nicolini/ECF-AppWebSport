@@ -32,43 +32,31 @@ $partenaire = $_GET['users_id'];
 
     <div class="container d-flex flex-wrap justify-content-around">
             <?php
-                foreach($result as $results){
-                    if ($results->active == 1){
-                        echo "<div class='card mx-3 my-3' style='width: 18rem;'>
+                foreach($result as $results){ ?>
+                    
+                        <div class='card mx-3 my-3' style='width: 18rem;'>
                         <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
-                        <p class='card-text text-white text-center' style='background-color: #34C924;'>ACTIF</p>
+                        <p class='card-text text-white text-center' <?php if ($results->active == 1){ echo "style='background-color: #34C924;'>ACTIF";} else { echo "style='background-color: #DB3A00;'>INACTIF";}?></p>
                         <div class='card-body'>
-                        <h5 class='card-title'>Nom: $results->Nom</h5>
-                        <p class='card-text'>$results->text_court</p>
-                        <p class='card-text'>Adresse: $results->adresse</p>
+                        <h5 class='card-title'>Nom:<?= $results->Nom ?></h5>
+                        <p class='card-text'><?= $results->text_court ?></p>
+                        <p class='card-text'>Adresse:<?= $results->adresse ?></p>
                         <h5>Permissions du Partenaire</h5>
                         <div class='form-check form-switch'>
-                        <input class='form-check-input' name='boissons' type='checkbox' id='flexSwitchCheckDefault' checked>
+                        <input class='form-check-input' name='boissons' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_boissons == 1){ echo "checked"; } else {echo "";}?>>
                         <label class='form-check-label' for='flexSwitchCheckDefault'>Vendre des boissons</label>
                         </div>
                         <div class='form-check form-switch'>
-                        <input class='form-check-input' name='plannings' type='checkbox' id='flexSwitchCheckDefault' checked>
+                        <input class='form-check-input' name='plannings' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_planning == 1){ echo "checked"; } else {echo "";}?>>
                         <label class='form-check-label' for='flexSwitchCheckDefault'>Gérer les plannings d'équipe</label>
                         </div>
                         <div class='form-check form-switch'>
-                        <input class='form-check-input' name='newsletter' type='checkbox' id='flexSwitchCheckDefault'>
+                        <input class='form-check-input' name='newsletter' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_newsletter == 1){ echo "checked"; } else {echo "";}?>>
                         <label class='form-check-label' for='flexSwitchCheckDefault'>Gestion des Newsletter</label>
                         </div>
                         </div>
-                        </div>";
-                    } else {
-                        echo "<div class='card mx-3 my-3 mw-100' style='width: 18rem;'>
-                        <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
-                        <p class='card-text text-white text-center' style='background-color: #DB3A00;'>INACTIF</p>
-                        <div class='card-body'>
-                        <h5 class='card-title'>Nom: $results->Nom</h5>
-                        <p class='card-text'>$results->text_court</p>
-                        <p class='card-text'>Adresse: $results->adresse</p>
                         </div>
-                        </div>";
-                    }
-                }
-            ?>
+            <?php }?>
     </div>
  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
