@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['email'] ==''){
+if (!isset($_SESSION['email'])){
     header('Location:login.php');
     exit();
 }
@@ -19,13 +19,8 @@ if ($_SESSION['email'] ==''){
     <?php require_once 'menu.php' ?>
 
     <main>
-        <?php
-            if($_SESSION['email'] !== ""){
-                $user = $_SESSION['email'];
-                // afficher un message
-                echo "<p class='text-center'>Bienvenue, vous êtes bien connecté au panneau d'administration de l'App Web Sport.</p>";
-            }
-        ?>
+        <br>
+        <p class='text-center'>Bienvenue, vous êtes bien connecté au panneau d'administration de l'App Web Sport.</p>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

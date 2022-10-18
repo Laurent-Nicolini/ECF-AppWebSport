@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['email'])){
+    header('Location:login.php');
+    exit();
+}
 $partenaire = $_GET['users_id'];
 ?>
 <!DOCTYPE html>
@@ -37,6 +41,19 @@ $partenaire = $_GET['users_id'];
                         <h5 class='card-title'>Nom: $results->Nom</h5>
                         <p class='card-text'>$results->text_court</p>
                         <p class='card-text'>Adresse: $results->adresse</p>
+                        <h5>Permissions du Partenaire</h5>
+                        <div class='form-check form-switch'>
+                        <input class='form-check-input' name='boissons' type='checkbox' id='flexSwitchCheckDefault' checked>
+                        <label class='form-check-label' for='flexSwitchCheckDefault'>Vendre des boissons</label>
+                        </div>
+                        <div class='form-check form-switch'>
+                        <input class='form-check-input' name='plannings' type='checkbox' id='flexSwitchCheckDefault' checked>
+                        <label class='form-check-label' for='flexSwitchCheckDefault'>Gérer les plannings d'équipe</label>
+                        </div>
+                        <div class='form-check form-switch'>
+                        <input class='form-check-input' name='newsletter' type='checkbox' id='flexSwitchCheckDefault'>
+                        <label class='form-check-label' for='flexSwitchCheckDefault'>Gestion des Newsletter</label>
+                        </div>
                         </div>
                         </div>";
                     } else {
