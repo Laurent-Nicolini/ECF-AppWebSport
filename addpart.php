@@ -28,12 +28,12 @@ if (!isset($_SESSION['email'])){
             <form method="POST" action="validpart.php" class="container">
             <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrez email...">
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrez email..." pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" require>
             <small id="emailHelp" class="form-text text-muted">Ne partagez jamais vos identifiants avec quelqu\'un d\'autre.</small>
             </div>
             <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Entrez le mot de passe...">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Entrez le mot de passe..." require>
             </div>
             <div class="form-group">
             <label for="role">Rôle Utilisateur</label>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['email'])){
             <form method="POST" action="validpart.php" class="container">
             <div class="form-group">
             <label for="nom">Nom de la Franchise</label>
-            <input type="text" name="nom" class="form-control" id="nom" placeholder="Entrez le nom de la franchise...">
+            <input type="text" name="nom" class="form-control" id="nom" placeholder="Entrez le nom de la franchise..." require>
             </div>
             <div class="form-group">
             <label for="active">Franchise Active/Inactive</label>
@@ -80,7 +80,7 @@ if (!isset($_SESSION['email'])){
             <form method="POST" action="validpart.php" class="container">
             <div class="form-group">
             <label for="adresse">Adresse de la Structure</label>
-            <input type="text" name="adresse" class="form-control" id="adresse" placeholder="Entrez l\'adresse de la structure...">
+            <input type="text" name="adresse" class="form-control" id="adresse" placeholder="Entrez l\'adresse de la structure..." require>
             </div>
             <div class="form-group">
             <label for="text_court">Quelques mots sur la structure</label>

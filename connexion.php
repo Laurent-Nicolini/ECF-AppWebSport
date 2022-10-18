@@ -2,8 +2,8 @@
 session_start();
 if(isset($_POST['email']) && isset($_POST['password']))
 {
-   $email = $_POST['email'];
-   $password = $_POST['password'];
+   $email = htmlspecialchars($_POST['email']);
+   $password = htmlspecialchars($_POST['password']);
     // connexion à la base de données
     try{
         $pdo = new PDO("mysql:host=localhost;dbname=appwebsport","root","");

@@ -1,8 +1,8 @@
 <?php
 if (isset($_POST["role"])){
     include "connexionbdd.php";
-    $email = $_POST['email'];
-    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $email = htmlspecialchars($_POST['email']);
+    $pass = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
     $role = $_POST['role'];
     $statement = $pdo->prepare(
         "INSERT INTO users (email, password, role) 
@@ -27,7 +27,7 @@ if (isset($_POST["role"])){
 } elseif (isset($_POST["nom"])) {
     include "connexionbdd.php";
     $idfranchise = $_COOKIE['idfranchise'];
-    $nom = $_POST['nom'];
+    $nom = htmlspecialchars($_POST['nom']);
     $active = $_POST['active'];
     $requete = $pdo->prepare(
         "INSERT INTO franchise (nom, users_id, active) 
@@ -53,8 +53,8 @@ if (isset($_POST["role"])){
 } elseif (isset($_POST["adresse"])){
     include "connexionbdd.php";
     $idstructure = $_COOKIE["idstructure"];
-    $adresse = $_POST['adresse'];
-    $text_court = $_POST['text_court'];
+    $adresse = htmlspecialchars($_POST['adresse']);
+    $text_court = htmlspecialchars($_POST['text_court']);
     $req = $pdo->prepare(
         "INSERT INTO structure (text_court, adresse, franchise_id) 
         VALUES (:text_court, :adresse, :idstructure)"

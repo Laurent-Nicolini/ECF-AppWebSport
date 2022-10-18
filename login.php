@@ -25,7 +25,7 @@ if (isset($_SESSION['email'])){
             <form class="col-sm-10 col-lg-6 mx-5" name="form" method="POST" action="connexion.php">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Adresse Email</label>
-                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre email..." require>
+                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre email..." pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" require>
                     <small id="emailHelp" class="form-text text-muted">Ne partagez jamais vos identifiants avec quelqu'un d'autre.</small>
                 </div>
                 <div class="form-group">
