@@ -55,13 +55,20 @@ if (isset($_POST["role"])){
     $idstructure = $_COOKIE["idstructure"];
     $adresse = htmlspecialchars($_POST['adresse']);
     $text_court = htmlspecialchars($_POST['text_court']);
+    if (!isset($_POST['boissons'])){ $boissons = 0; } else {$boissons = 1;}
+    if (!isset($_POST['planning'])){ $planning = 0; } else {$planning = 1;}
+    if (!isset($_POST['newsletter'])){ $newsletter = 0; } else {$newsletter = 1;}
+    
     $req = $pdo->prepare(
-        "INSERT INTO structure (text_court, adresse, franchise_id) 
-        VALUES (:text_court, :adresse, :idstructure)"
-    ); 
+        "INSERT INTO structure (text_court, adresse, franchise_id, perm_boissons, perm_planning, perm_newsletter) 
+        VALUES (:text_court, :adresse, :idstructure, :boissons, :planning, :newsletter)"
+    );  
     $req->bindValue(':text_court', $text_court, PDO::PARAM_STR);
     $req->bindValue(':adresse', $adresse, PDO::PARAM_STR);
     $req->bindValue(':idstructure', $idstructure, PDO::PARAM_INT);
+    $req->bindValue(':boissons', $boissons, PDO::PARAM_INT);
+    $req->bindValue(':planning', $planning, PDO::PARAM_INT);
+    $req->bindValue(':newsletter', $newsletter, PDO::PARAM_INT);
     $req->execute();
     header('Location: addpart.php?ajout=valider');
 }

@@ -87,6 +87,20 @@ if (!isset($_SESSION['email'])){
             <input type="textarea" name="text_court" class="form-control" id="text_court" placeholder="Informations de la structure...">
             </div>
             <br>
+            <p>Permissions de la Structure:</p>
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="boissons" value="1" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Vendre des Boissons</label>
+            </div>
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="planning" value="1" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Gérer les Plannings des Equipes</label>
+            </div>
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="newsletter" value="1" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Envoi de Newsletter</label>
+            </div>
+            <br>
             <button type="submit" class="btn" style="color:#34C924;">Créer la Structure</button>
             </form>';
         }
