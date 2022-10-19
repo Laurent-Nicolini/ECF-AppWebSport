@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['email'])){
-    header('Location:login.php');
-    exit();
-}
+include_once('validlogin.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -68,7 +65,7 @@ if (!isset($_SESSION['email'])){
             <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
             <p class='card-text text-white text-center' style='background-color: #34C924;'>ACTIF</p>
             <div class='card-body'>
-              <a href='partenaire?users_id=$results->users_id'><h5 class='card-title text-center'>$results->Nom</h5></a>
+              <a href='partenaire.php?users_id=$results->users_id'><h5 class='card-title text-center'>$results->Nom</h5></a>
               <p class='card-text'>ID Client: $results->users_id</p>
               <p class='card-text'>Email: $results->Email</p>
               <p class='card-text'>$results->text_court</p>
@@ -80,7 +77,7 @@ if (!isset($_SESSION['email'])){
             <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
             <p class='card-text text-white text-center' style='background-color: #DB3A00;'>INACTIF</p>
             <div class='card-body'>
-              <a href='partenaire?users_id=$results->users_id'><h5 class='card-title text-center'>$results->Nom</h5></a>
+              <a href='partenaire.php?users_id=$results->users_id'><h5 class='card-title text-center'>$results->Nom</h5></a>
               <p class='card-text'>ID Client: $results->users_id</p>
               <p class='card-text'>Email: $results->Email</p>
               <p class='card-text'>$results->text_court</p>

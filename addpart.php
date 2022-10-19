@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['email'])){
-    header('Location:login.php');
-    exit();
-}
+include_once('validlogin.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">

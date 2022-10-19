@@ -4,6 +4,9 @@
                 <a class="navbar-brand" href="index.php">Admin App Web Sport</a>
                 <p class=""><a href='deconnexion.php'>Déconnexion</a></p>
             </div>
+            <?php
+            if($_SESSION['role'] == 1){
+                echo '
             <div class="container-fluid d-flex">
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item active">
@@ -17,6 +20,6 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
                 </form>
-            </div>
+            </div>';} ?>
         </div>
     </nav>

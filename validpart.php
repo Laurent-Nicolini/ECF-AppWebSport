@@ -12,17 +12,19 @@ if (isset($_POST["role"])){
     $statement->bindValue(':password', $pass, PDO::PARAM_STR);
     $statement->bindValue(':role', $role, PDO::PARAM_STR);
     $sttuser = $statement->execute();
-    if ($sttuser){
-        $statement2 = $pdo->prepare(
-            "SELECT id FROM users WHERE email=:email"
-        );
-        $statement2->bindValue(':email', $email, PDO::PARAM_STR);
-        $statement2->execute();
-        $usersid = $statement2->fetch(PDO::FETCH_OBJ);
-        setcookie('idfranchise',$usersid->id);
-        $_COOKIE["idfranchise"] = $usersid->id;
-        header('Location: addpart.php?ajout=franchise');
-    }
+    if ($role == 0){
+        if ($sttuser){
+            $statement2 = $pdo->prepare(
+                "SELECT id FROM users WHERE email=:email"
+            );
+            $statement2->bindValue(':email', $email, PDO::PARAM_STR);
+            $statement2->execute();
+            $usersid = $statement2->fetch(PDO::FETCH_OBJ);
+            setcookie('idfranchise',$usersid->id);
+            $_COOKIE["idfranchise"] = $usersid->id;
+            header('Location: addpart.php?ajout=franchise');
+        }
+    } else {header('Location: addpart.php?ajout=valider');}
     
 } elseif (isset($_POST["nom"])) {
     include "connexionbdd.php";

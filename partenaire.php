@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['email'])){
-    header('Location:login.php');
-    exit();
-}
 $partenaire = $_GET['users_id'];
 ?>
 <!DOCTYPE html>
@@ -43,15 +39,15 @@ $partenaire = $_GET['users_id'];
                         <p class='card-text'>Adresse:<?= $results->adresse ?></p>
                         <h5>Permissions du Partenaire</h5>
                         <div class='form-check form-switch'>
-                        <input class='form-check-input' name='boissons' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_boissons == 1){ echo "checked"; } else {echo "";}?>>
+                        <input class='form-check-input' name='boissons' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_boissons == 1){ echo "checked "; } else {echo " ";}?><?php if($_SESSION['role'] == 0){ echo "disabled";} else {echo "";}?>>
                         <label class='form-check-label' for='flexSwitchCheckDefault'>Vendre des boissons</label>
                         </div>
                         <div class='form-check form-switch'>
-                        <input class='form-check-input' name='plannings' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_planning == 1){ echo "checked"; } else {echo "";}?>>
+                        <input class='form-check-input' name='plannings' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_planning == 1){ echo "checked "; } else {echo " ";}?><?php if($_SESSION['role'] == 0){ echo "disabled";} else {echo "";}?>>
                         <label class='form-check-label' for='flexSwitchCheckDefault'>Gérer les plannings d'équipe</label>
                         </div>
                         <div class='form-check form-switch'>
-                        <input class='form-check-input' name='newsletter' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_newsletter == 1){ echo "checked"; } else {echo "";}?>>
+                        <input class='form-check-input' name='newsletter' type='checkbox' id='flexSwitchCheckDefault' <?php if($results->perm_newsletter == 1){ echo "checked "; } else {echo " ";}?><?php if($_SESSION['role'] == 0){ echo "disabled";} else {echo "";}?>>
                         <label class='form-check-label' for='flexSwitchCheckDefault'>Gestion des Newsletter</label>
                         </div>
                         </div>

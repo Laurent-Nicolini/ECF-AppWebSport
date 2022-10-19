@@ -15,18 +15,29 @@ if(isset($_POST['email']) && isset($_POST['password']))
         echo $e->getMessage();
      }
     $statement->execute();
-    $result = $statement->fetchAll();
-     if ($email=$result && $password=$result){
-           $_SESSION['email'] = $email;
-           header('Location: index.php');
-     } else
-        {
-           header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
-        }
+    $result = $statement->fetchAll(PDO::FETCH_OBJ);
+    if($email=$result && $password=$result){
+    foreach($result as $results){
+      
+         if($results->Role == 1){
+           $_SESSION['role'] = 1;
+           header('Location: index.php'); 
+         } elseif ($results->Role == 0) {
+            $_SESSION['role'] = 0;
+            $_SESSION['usersid'] = intval($results->Id);
+            $usersid = intval($results->Id);
+            header("Location: partenaire.php?users_id=$usersid");
+         } else
+            {
+               header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+            }
+         }
+      } else {
+         header('Location: login.php?erreur=1');
+         exit();
+      }
+} else {
+   header('Location: login.php?erreur=1');
+   exit();
 }
-else
-{
-   header('Location: login.php');
-}
-mysqli_close($db); // fermer la connexion
 ?>
