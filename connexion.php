@@ -40,7 +40,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
    } else {
       header('Location: login.php?erreur=1');
       exit();
-   }
+   } 
 } else {
    header('Location: login.php?erreur=1');
    exit();

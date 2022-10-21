@@ -51,9 +51,23 @@ a{
 }
 
 a:hover{
-    color: rgba(52, 201, 36, 0.5);
+    color: rgba(52, 201, 36, 0.5) !important;
 }
 
 a:active{
     color: #26921A;
+}
+
+/* Style du bouton dynamique dans page Partenaire */
+.submitperm{
+    background:#34C924 !important;
+    display:none;
+}
+
+.submitperm:hover{
+    background: rgba(52, 201, 36, 0.5) !important;
+}
+
+.submitperm{
+    background: #26921A !important;
 }
