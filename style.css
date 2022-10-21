@@ -58,7 +58,7 @@ a:active{
     color: #26921A;
 }
 
-/* Style du bouton dynamique dans page Partenaire */
+/* Style du bouton dynamique dans page Structure */
 .submitperm{
     background:#34C924 !important;
     display:none;
@@ -69,5 +69,19 @@ a:active{
 }
 
 .submitperm{
+    background: #26921A !important;
+}
+
+/* Style du bouton dynamique dans page Partenaire */
+.submitactive{
+    background:#34C924 !important;
+    display:none;
+}
+
+.submitactive:hover{
+    background: rgba(52, 201, 36, 0.5) !important;
+}
+
+.submitactive{
     background: #26921A !important;
 }

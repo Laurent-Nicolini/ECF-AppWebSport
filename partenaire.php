@@ -26,9 +26,35 @@ $partenaire = $_GET['users_id'];
 
     ?>
     <h2 class="text-center">Partenaire:</h2>
-
-    <div class="container d-flex flex-wrap justify-content-around">
+    <?php
+    $statement2 = $pdo->prepare(
+            "SELECT active FROM franchise
+            WHERE users_id = :partenaire"
+        );
+    $statement2->bindValue(":partenaire", $partenaire, PDO::PARAM_INT);
+    $statement2->execute();
+    $result2 = $statement2->fetchAll(PDO::FETCH_OBJ);
+    ?>
+        <!-- Options Activité Partenaire -->
+    <?php foreach ($result2 as $results2){ ?>
+    <form class='text-center' action='validactive.php?users_id=<?=$partenaire?>' method='POST' name='form_active'>
+        <p class="text-center">Définir l'activité du Partenaire:</p>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input radio1" type="radio" name="active" id="inlineRadio1" value="1" <?php if ($_SESSION['role'] == 0){ echo" disabled ";}?>>
+            <label class="form-check-label" for="inlineRadio1">Actif</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input radio2" type="radio" name="active" id="inlineRadio2" value="0" <?php if ($_SESSION['role'] == 0){ echo" disabled ";}?>>
+            <label class="form-check-label" for="inlineRadio2">Inactif</label>
+        </div>
+        <?php if ($_SESSION['role'] == 1){ echo" 
+            <button class='btn submitactive mx-auto' type='submit'>Mise à Jour Partenaire</button>";}?>
+        </form>
+    <?php } ?>
+        <br>
+        <div class="container d-flex flex-wrap justify-content-around">
             <?php
+            /* Boucle sur le résultat des franchises dans la BDD */
                 foreach($result as $results){ $structureid = $results->Id ;?>
                         
                         <div class='card mx-3 my-3' style='width: 18rem;'>
@@ -39,8 +65,9 @@ $partenaire = $_GET['users_id'];
                         <a href='structure.php?idstructure=$structureid&users_id=$partenaire'>";}?><h5 class='card-title'>Nom: <?= $results->Nom ?></h5><?php if ($_SESSION['role'] == 1){ echo"</a>";}?>
                         <p class='card-text'><?= $results->text_court ?></p>
                         <p class='card-text'>Adresse: <?= $results->adresse ?></p>
+
+                        <!-- Permissions du partenaire en lecture seule sur cette page -->
                         <h5>Permissions du Partenaire</h5>
-                        <!--<form action="validperm.php" name="form_perm" method="POST" >--> 
                         <div class='form-check form-switch'>
                         <input class='form-check-input' name='boissons' type='checkbox' id='switchperm1'<?php if($results->perm_boissons == 1){ echo " checked "; } else {echo " ";}?> disabled>
                         <label class='form-check-label' for='flexSwitchCheckDefault'>Vendre des boissons</label>
@@ -59,6 +86,6 @@ $partenaire = $_GET['users_id'];
     </div>
  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    
+    <script src="scriptpart.js"></script>
 </body>
 </html>

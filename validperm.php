@@ -1,5 +1,4 @@
 <?php
-var_dump($_GET);
 $idstructure = $_GET['idstructure'];
 $partenaire = $_GET['users_id'];
 
