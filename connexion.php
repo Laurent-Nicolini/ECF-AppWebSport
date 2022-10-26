@@ -21,9 +21,9 @@ if(isset($_POST['email']) && isset($_POST['password']))
          $passhash = $results->Password;
          $role = $results->Role;
          $idusers = intval($results->Id);
+         $_SESSION['email'] = $results->Email;
       }
    } else {header('Location: login.php?erreur=1');}
-
    try{
       $stt = $pdo->prepare("SELECT active FROM franchise WHERE users_id =:idusers");
       $stt->bindValue(':idusers', $idusers, PDO::PARAM_INT);
@@ -52,7 +52,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
             header("Location: partenaire.php");
             exit();
             } else {
-               header("Location: login.php?email=$email&erreur=2");
+               
+               header("Location: login.php?erreur=2");
                exit();
             }
          } else
