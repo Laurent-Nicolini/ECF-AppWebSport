@@ -1,6 +1,6 @@
 <?php
 session_start();
-$partenaire = $_GET['users_id'];
+$partenaire = $_SESSION['users_id'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,9 +18,10 @@ $partenaire = $_GET['users_id'];
         include_once 'connexionbdd.php';
         $statement = $pdo->prepare(
             "SELECT * FROM franchise
-            INNER JOIN structure ON franchise.id=franchise_id
-            WHERE users_id = $partenaire"
+            INNER JOIN structure ON franchise.Id=franchise_id
+            WHERE users_id = :partenaire"
         );
+        $statement->bindValue(':partenaire',$partenaire,PDO::PARAM_INT);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_OBJ);
 

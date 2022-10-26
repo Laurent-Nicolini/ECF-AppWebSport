@@ -30,8 +30,12 @@
                 <?php
                 if(isset($_GET['erreur'])){
                     $err = $_GET['erreur'];
-                    if($err !==0)
+                    if($err == 1){
                         echo "<p class='bg-danger mt-3 text-white text-center'>Utilisateur ou mot de passe incorrect</p>";
+                    } elseif ($err == 2){
+                        $email = $_GET['email'];
+                        echo "<p class='bg-danger mt-3 text-white text-center'>L'Utilisateur: $email ne peut plus se connecter, son compte est inactif, veuillez contacter Orange Bleue.</p>";
+                    }
                 }
                 ?>
             </form>
