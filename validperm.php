@@ -1,4 +1,5 @@
 <?php
+session_start();
 $idstructure = $_GET['idstructure'];
 $partenaire = $_GET['users_id'];
 
@@ -51,6 +52,7 @@ foreach($requete as $requetes){
         $req6 = $statement6->fetch(PDO::FETCH_OBJ);
     }
     }
-    header("Location: structure.php?idstructure=$idstructure&users_id=$partenaire&permvalid=oui");
+    $_SESSION['permvalid'] = 1;
+    header("Location: structure.php?idstructure=$idstructure&users_id=$partenaire");
     exit();
 }

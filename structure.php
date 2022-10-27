@@ -18,8 +18,8 @@ $partenaire = $_GET['users_id'];
 <body>
     <?php require_once 'menu.php' ?>
 
-    <?php if(isset($_GET['permvalid'])){
-        if($_GET['permvalid'] == 'oui'){
+    <?php if(isset($_SESSION['permvalid'])){
+        if($_SESSION['permvalid'] == 1){
             echo "<p class='text-center bg-success text-white'>Les permissions de cette structure ont bien été mises à jour !</p>";
         } else {
             echo "<p class='text-center bg-danger text-white'>Une erreur est survenue ! Les permissions de cette structure n'ont pas été mises à jour !</p>";
