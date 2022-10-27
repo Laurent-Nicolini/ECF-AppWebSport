@@ -1,6 +1,10 @@
 <?php
 session_start();
+if($_SESSION['role'] == 0){
 $partenaire = $_SESSION['users_id'];
+} else {
+    $partenaire = $_GET['users_id'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
