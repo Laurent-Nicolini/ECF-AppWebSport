@@ -16,9 +16,9 @@
                         <a class="nav-link" href="addpart.php?ajout=partenaire">Ajouter un partenaire</a>
                     </li>            
                 </ul>
-                <form class="form-inline my-2 my-lg-2 ms-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
+                <form class="form-inline my-2 my-lg-2 ms-auto" action="search.php" method="POST">
+                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Entrez votre recherche..." aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-2 recherche" type="submit">Recherchez</button>
                 </form>
             </div>';} ?>
         </div>
