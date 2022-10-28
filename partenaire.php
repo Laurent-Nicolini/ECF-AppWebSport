@@ -60,7 +60,7 @@ $partenaire = $_SESSION['users_id'];
         <div class="container d-flex flex-wrap justify-content-around">
             <?php
             /* Boucle sur le résultat des franchises dans la BDD */
-                foreach($result as $results){ $structureid = $results->Id ;?>
+                foreach($result as $results){ $structureid = $results->Id;?>
                         
                         <div class='card mx-3 my-3' style='width: 18rem;'>
                         <img class='card-img-top' src='haltere.jpg' alt='Card image cap'>
