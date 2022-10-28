@@ -13,3 +13,10 @@ switchperm2.addEventListener("click", (e) => {
 switchperm3.addEventListener("click", (e) => {
     submitperm.style.display = "block";
 })
+
+submitperm.addEventListener('click', (e) => {
+    if (confirm("Souhaitez-vous mettre à jour les permissions ?") === false) {
+        e.preventDefault();
+        return false;
+    }
+})
