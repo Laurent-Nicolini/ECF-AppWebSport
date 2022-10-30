@@ -5,9 +5,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
    $email = htmlspecialchars($_POST['email'],ENT_QUOTES);
    $password = htmlspecialchars($_POST['password'], ENT_QUOTES);
     // connexion à la base de données
+    include_once 'connexionbdd.php';
     try{
-      //$pdo = new PDO("mysql:host=localhost;dbname=odrl9643_appwebsport","odrl9643_awsadmin","App2022+");
-      $pdo = new PDO("mysql:host=localhost;dbname=appwebsport","root","");
       $statement = $pdo->prepare("SELECT * FROM users WHERE email =:email ");
       $statement->bindValue(':email', $email, PDO::PARAM_STR);
   }
