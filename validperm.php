@@ -7,9 +7,6 @@ if(!isset($_POST['boissons'])) { $boissons = 0;} else { $boissons = 1;}
 if(!isset($_POST['planning'])) { $planning = 0;} else { $planning = 1;}
 if(!isset($_POST['newsletter'])) { $newsletter = 0;} else { $newsletter = 1;}
 
-var_dump($boissons,$planning,$newsletter);
-//exit();
-
 include_once 'connexionbdd.php'; 
 
 $stt = $pdo->prepare("SELECT perm_boissons,perm_planning,perm_newsletter FROM structure WHERE id=:idstructure");
@@ -17,12 +14,8 @@ $stt->bindValue(":idstructure", $idstructure,PDO::PARAM_INT);
 $stt->execute();
 $requete = $stt->fetchAll(PDO::FETCH_OBJ);
 foreach($requete as $requetes){
-    var_dump($requetes);
-    //exit();
 
     if ($boissons != intval($requetes->perm_boissons)){
-        var_dump(intval($requetes->perm_boissons));
-        //exit();
         if ($requetes->perm_boissons == 0){
         $statement = $pdo->prepare("UPDATE structure SET perm_boissons = 1 WHERE Id = :idstructure");
         $statement->bindValue(":idstructure", $idstructure, PDO::PARAM_INT);
