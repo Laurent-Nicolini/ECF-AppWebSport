@@ -23,37 +23,40 @@ include_once('validlogin.php');
             <a href="allusers.php?filtre=0"><button class="text-white rounded">Partenaires Inactifs</button></a>
         </div>
         <?php
-        include_once 'connexionbdd.php';
+        //include_once 'connexionbdd.php';
         if ($_GET['filtre'] >= 1){
-            $statement = $pdo->prepare(
-                    "SELECT * FROM users 
-                    INNER JOIN franchise ON users.id=users_id 
-                    INNER JOIN structure ON franchise.id=franchise_id
-                    WHERE role = 0 AND active = 1"
-                    );
+            include 'filter_active.php';
+            // $statement = $pdo->prepare(
+            //         "SELECT * FROM users 
+            //         INNER JOIN franchise ON users.id=users_id 
+            //         INNER JOIN structure ON franchise.id=franchise_id
+            //         WHERE role = 0 AND active = 1"
+            //         );
 
-            $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_OBJ);
+            // $statement->execute();
+            // $result = $statement->fetchAll(PDO::FETCH_OBJ);
         }elseif($_GET['filtre'] === '0'){
-            $statement = $pdo->prepare(
-                "SELECT * FROM users 
-                INNER JOIN franchise ON users.id=users_id 
-                INNER JOIN structure ON franchise.id=franchise_id
-                WHERE role = 0 AND active = 0"
-                );
+            include 'filter_inactive.php';
+        //     $statement = $pdo->prepare(
+        //         "SELECT * FROM users 
+        //         INNER JOIN franchise ON users.id=users_id 
+        //         INNER JOIN structure ON franchise.id=franchise_id
+        //         WHERE role = 0 AND active = 0"
+        //         );
 
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+        // $statement->execute();
+        // $result = $statement->fetchAll(PDO::FETCH_OBJ);
         } else {
-            $statement = $pdo->prepare(
-                "SELECT * FROM users 
-                INNER JOIN franchise ON users.id=users_id 
-                INNER JOIN structure ON franchise.id=franchise_id
-                WHERE role = 0"
-                );
+            include 'filter_allusers.php';
+        //     $statement = $pdo->prepare(
+        //         "SELECT * FROM users 
+        //         INNER JOIN franchise ON users.id=users_id 
+        //         INNER JOIN structure ON franchise.id=franchise_id
+        //         WHERE role = 0"
+        //         );
 
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+        // $statement->execute();
+        // $result = $statement->fetchAll(PDO::FETCH_OBJ);
         }
         ?>
         <br>
